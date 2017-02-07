@@ -1,15 +1,15 @@
 # Site settings
-name: LESS OR MORE
+name: LESS IS MORE
 email: huawen.yu@gmail.com
 author: Wilson Huawen Yu
 url: http://huawenyu.github.io
 resume_site: http://huawenyu.github.io/Resume.md/
 github: https://github.com/huawenyu
 baseurl: ""
-description: Actually, less is more!
-meta_description: 个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
-motto: IT'S OUR WITS THAT MAKE US MEN.
-banner: 学而不思则罔，思而不学则殆。
+description: Everything should be made as simple as possible, but no simpler.
+meta_description: blog, embedded linux, c, network security
+motto: Keep it simple, stupid.
+banner: Keep it simple, less is more!
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -27,15 +27,13 @@ github: [metadata]
 kramdown:
     input: GFM
     hard_wrap: false
-gems:
-    - jekyll-sitemap
-    - jekyll-coffeescript
-    - jekyll-paginate
+
+gems: ['jekyll-sitemap', 'jekyll-coffeescript', 'jekyll-paginate']
 
 # GitHub Pages & Jekyll override the following settings in your _config.yml file, which you cannot change:
 lsi: false
 safe: true
-source: [your repo's top level directory]
+source: ''
 incremental: false
 highlighter: rouge
 gist:

@@ -70,5 +70,5 @@ Use browser open URL `http://localhost:4000`
 
 ## About me
 
-[Wilson Huawen Yu](http://huawenyu.github.io/Resume.md)
+[Wilson Huawen Yu](http://huawenyu.github.io/2012/12/18/Resume/)
 

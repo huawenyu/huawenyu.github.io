@@ -1,3 +1,16 @@
+---
+layout: post
+published: true
+title:  Howto use this Jekyll theme
+date:   2016-08-27 01:08:00 +1600
+categories: document, jekyll
+tag: howto
+---
+
+* content
+{:toc}
+
+
 # Blogs
 This blogs base on Jekyll, and using [LessOrMore](https://github.com/luoyan35714/LessOrMore) theme which come from [jekyllthemes](http://jekyllthemes.org/).
 

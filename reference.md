@@ -10,6 +10,6 @@ permalink: /reference/
 
 # Interesting websites:
 
-  - http://tldp.org/guides.html 			THE Linux documentation project - everything!
-  - http://unixgeeks.org/ 			UNIX for Geeks.	
+  - [TLDP](http://tldp.org/guides.html), THE Linux documentation project - everything!
+  - [UnixGeeks](http://unixgeeks.org/), UNIX for Geeks.
 

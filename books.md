@@ -8,9 +8,7 @@ permalink: /books/
 {:toc}
 
 
-# Books
-
-Programming:
+## Programming:
 
   - Anything by the late W. Richard Stevens, in particular:
     + [Advanced Programming in the Unix Environment][1]

@@ -39,6 +39,13 @@ gist:
     noscript: false
 kramdown:
     math_engine: mathjax
+
+collections:
+  faqs:
+    output: true
+    permalink: /:collection/:path/
+    title: FAQs
+
 #FB:
 #  comments :
 #    provider : duoshuo

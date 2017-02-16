@@ -57,6 +57,7 @@ The struct of one page
 
 ``` bash
 $ jekyll server
+$ jekyll server --port 4001
 ```
 
 Use browser open URL `http://localhost:4000`

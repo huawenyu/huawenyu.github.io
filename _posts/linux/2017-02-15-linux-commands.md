@@ -395,7 +395,8 @@ batch rename all wad*.c files to extension *.cpp files
     $ tail -f logfile logfile1   	 follow multiple log files on the go
     $ <space>cmd                  	 insert space to not appear in `history` command
 
-    $ echo "You can simulate on-screen typing just like in the movies" | pv -qL 10        << typing simulate using pv
+    # typing simulate using pv
+    $ echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
 
     $ pushd                 	 put or pop dir into stack
     $ popd

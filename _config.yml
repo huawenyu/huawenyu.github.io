@@ -18,14 +18,9 @@ paginate: 10
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
 github_username: huawenyu
-highlighter: Pygments
+#highlighter: Pygments
 
 # Build settings
-markdown: kramdown
-
-kramdown:
-    input: GFM
-    hard_wrap: false
 
 gems: ['jekyll-sitemap', 'jekyll-coffeescript', 'jekyll-paginate']
 
@@ -34,11 +29,15 @@ lsi: false
 safe: true
 source: ''
 incremental: false
+markdown: kramdown
 highlighter: rouge
+kramdown:
+    input: GFM
+    hard_wrap: false
+    syntax_highlighter: rouge
+    math_engine: mathjax
 gist:
     noscript: false
-kramdown:
-    math_engine: mathjax
 
 collections:
   faqs:

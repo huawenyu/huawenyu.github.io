@@ -428,8 +428,6 @@ batch rename all wad*.c files to extension *.cpp files
 
 ```
 
-See for [more info][3].
-
   [1]: http://linuxtrove.com/wp/?p=314
   [2]: http://57un.wordpress.com/2013/04/29/15-interesting-and-extremely-helpful-linux-cli-tricks/
   [3]: http://www.cyberciti.biz/faq/linux-unix-test-internet-connection-download-upload-speed/

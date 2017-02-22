@@ -79,6 +79,15 @@ _posts git:(master) tree
     └── 2016-08-27-how-to-use-this-jekyll-theme.md
 ```
 
+### Simetimes the new post not generated
+
+ - **The post is not placed in the** `_posts` **directory.**
+ - [**The post has incorrect title.**][3] Posts should be named `YEAR-MONTH-DAY-title.MARKUP`
+ - **The post's date is in the future.** You can make the post visible by setting `future: true` in `_config.yml` [(documentation)][6]
+ - [**The post has** `published: false` **in its front matter.**][4] Set it to `true`.
+ - [**The title contains a** `:` **character.**][5] Replace it with `&#58`.
+
+
 ### Preview
 
 ``` bash
@@ -222,3 +231,7 @@ Another thing, if you want to "color your code", you need an highlight css. [You
 
   [1]: http://ben.balter.com/2015/02/20/jekyll-collections/
   [2]: https://github.com/search?q=pygments%20style
+  [3]: http://stackoverflow.com/questions/15046420/jekyll-not-generating-posts
+  [4]: http://stackoverflow.com/questions/16990138/jekyll-not-generating-posts
+  [5]: http://stackoverflow.com/questions/10963002/jekyll-new-posts-not-being-generated
+  [6]: https://jekyllrb.com/docs/configuration/#build-command-options

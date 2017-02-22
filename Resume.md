@@ -1,3 +1,13 @@
+---
+layout: post
+title: Resume
+permalink: /Resume/
+---
+
+* content
+{:toc}
+
+
 <table>
   <tr>
     <td>Name: </td>
@@ -9,10 +19,6 @@
   </tr>
   <tr>
     <td>Education:</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>September, 2004 ~ June, 2007</td>
     <td></td>
   </tr>
   <tr>
@@ -34,10 +40,6 @@ Guangzhou, Guangdong 510000 China</td>
 Research on Channel Estimation of Broadband Communications</td>
   </tr>
   <tr>
-    <td>September, 1997 – June, 2000</td>
-    <td></td>
-  </tr>
-  <tr>
     <td>University Name</td>
     <td>Huazhong University of Science and Technology</td>
   </tr>
@@ -53,10 +55,6 @@ Wuhan, Hubei 430000 China</td>
   <tr>
     <td>Research Focus</td>
     <td>Precision Analyst System of Computer Numerical Control</td>
-  </tr>
-  <tr>
-    <td>September, 1993 – June, 1997</td>
-    <td></td>
   </tr>
   <tr>
     <td>University Name</td>
@@ -84,10 +82,6 @@ Wuhan, Hubei 430000 China</td>
     <td></td>
   </tr>
   <tr>
-    <td>September, 2012 ~ </td>
-    <td></td>
-  </tr>
-  <tr>
     <td>Employer</td>
     <td>Fortinet Technologies</td>
   </tr>
@@ -95,10 +89,6 @@ Wuhan, Hubei 430000 China</td>
     <td>Address</td>
     <td>#400 – 4190 Still Creek Drive,
 Burnaby, BC V5C 6G9 Canada</td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td>604-430-1297 (ex 6714)</td>
   </tr>
   <tr>
     <td>Position</td>
@@ -111,10 +101,6 @@ Web Cache
 Wan Optimization</td>
   </tr>
   <tr>
-    <td>September, 2000 ~ June, 2012</td>
-    <td></td>
-  </tr>
-  <tr>
     <td>Employer</td>
     <td>China Telecom Guangzhou R&D Center</td>
   </tr>
@@ -122,10 +108,6 @@ Wan Optimization</td>
     <td>Address</td>
     <td>109 Zhongshan Ave West,
 Guangzhou, Guangdong 510000 China</td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td>86 20 38639168</td>
   </tr>
   <tr>
     <td>Position</td>

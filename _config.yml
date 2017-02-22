@@ -28,6 +28,7 @@ gems: ['jekyll-sitemap', 'jekyll-coffeescript', 'jekyll-paginate']
 lsi: false
 safe: true
 source: ''
+future: true
 incremental: false
 markdown: kramdown
 highlighter: rouge

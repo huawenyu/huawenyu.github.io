@@ -81,6 +81,8 @@ _posts git:(master) tree
 
 ### Simetimes the new post not generated
 
+ - First open our GitPage repository like 'https://github.com/<yourname>/<yourname>.github.io',
+     click 'settings', check there have any building problem notify under 'GitHub Pages' paragraph.
  - **The post is not placed in the** `_posts` **directory.**
  - [**The post has incorrect title.**][3] Posts should be named `YEAR-MONTH-DAY-title.MARKUP`
  - **The post's date is in the future.** You can make the post visible by setting `future: true` in `_config.yml` [(documentation)][6]

@@ -90,6 +90,16 @@ Clean logfile which come from `plink -telnet 127.0.0.1 | tee log.file`
     $ rm -- -1mpFile.out
     $ rm !(*.c|*.py)        	 delete all the files except .c and .py files.
 
+## diff
+
+There have another tools like: lsdiff, filterdiff, diffstat, patch.
+
+    $ diff -x '*.gz' -x '.git' -x '.svn' -w -u -r -N WorkingCopy1 WorkingCopy2
+      -w to ignore all Whitespace
+      -u to use the unified diff format (like subversion)
+      -r for recursive
+      -N to let new files appear in the patch
+
 ## touch
 
     $ touch -d "9am" temp1  	 create dir according assigned time

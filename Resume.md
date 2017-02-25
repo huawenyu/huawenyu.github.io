@@ -8,116 +8,86 @@ permalink: /Resume/
 {:toc}
 
 
-<table>
-  <tr>
-    <td>Name: </td>
-    <td>Wilson Huawen Yu</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Education:</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>University Name</td>
-    <td>South China University of Technology</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>381 Wusan Road,
-Guangzhou, Guangdong 510000 China</td>
-  </tr>
-  <tr>
-    <td>Degree and Major</td>
-    <td>Doctor Degree in Computer Science</td>
-  </tr>
-  <tr>
-    <td>Research Focus</td>
-    <td>Fiscal Cash Register using C on embedded Linux
-Research on Channel Estimation of Broadband Communications</td>
-  </tr>
-  <tr>
-    <td>University Name</td>
-    <td>Huazhong University of Science and Technology</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>1037 Luoyu Road,
-Wuhan, Hubei 430000 China</td>
-  </tr>
-  <tr>
-    <td>Degree and Major</td>
-    <td>Master Degree in Computer Systems Engineering</td>
-  </tr>
-  <tr>
-    <td>Research Focus</td>
-    <td>Precision Analyst System of Computer Numerical Control</td>
-  </tr>
-  <tr>
-    <td>University Name</td>
-    <td>Wuhan University of Technology</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>122 Luoshi Road
-Wuhan, Hubei 430000 China</td>
-  </tr>
-  <tr>
-    <td>Degree and Major</td>
-    <td>Bachelor Degree in Engineering</td>
-  </tr>
-  <tr>
-    <td>Research Focus</td>
-    <td>Heat Engine</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Work Experience:</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Employer</td>
-    <td>Fortinet Technologies</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>#400 – 4190 Still Creek Drive,
-Burnaby, BC V5C 6G9 Canada</td>
-  </tr>
-  <tr>
-    <td>Position</td>
-    <td>Software Developer</td>
-  </tr>
-  <tr>
-    <td>Job Description</td>
-    <td>Web Proxy
-Web Cache
-Wan Optimization</td>
-  </tr>
-  <tr>
-    <td>Employer</td>
-    <td>China Telecom Guangzhou R&D Center</td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>109 Zhongshan Ave West,
-Guangzhou, Guangdong 510000 China</td>
-  </tr>
-  <tr>
-    <td>Position</td>
-    <td>Software Developer</td>
-  </tr>
-  <tr>
-    <td>Job Description</td>
-    <td>Computer Telecom Integration (CTI)
-Telecom Billing System (C/C++)</td>
-  </tr>
-</table>
+Wilson Huawen Yu
+================
+
+-------------------     ----------------------------
+Burnaby                        huawen.yu@gmail.com
+British Columbia               Fortinet Technologies
+(Canada)                  Burnaby, BC V5C 6G9 Canada
+-------------------     ----------------------------
+
+Experience
+----------
+
+**Fortinet Technologies: Software Developer**
+
+(#400 – 4190 Still Creek Drive, Burnaby, BC V5C 6G9 Canada)
+
+* FortiOS: webproxy, webcache and Wan Optimization
+   - WAN optimization to provide fast and secure application responses 
+     between locations on a Wide Area Network (WAN).
+     The web caching component of WAN optimization extends this protection 
+     and performance boost to cloud services.
+
+**Comba Telecom Systems Holdings Ltd: Senior Embedded System Developer**
+
+(10 Shenzhou Street, Guangzhou Science City, Guangdong, China)
+
+* Embedded Cavium Networks WLan Solution using cavium networks
+  - The project is an Embedded Wireless Infrastructure Solutions using cavium networks
+    OCTEON family of mips64 processors and including Radisys ATCA-7220/2210/4500, etc.
+    The Fit Access Points(AP) can be managed and controlled centralized by Access Controller(AC).
+  - Developed the management interface based on CLI
+  - Practiced Scrum, unit testing, code reviews and automated daily builds using script.
+
+**China Telecom Guangzhou R&D Center: Software Developer**
+
+(109 Zhongshan Ave West, Guangzhou, Guangdong, China)
+
+* Call Center (Linux/Sco-Unixware)
+  - Developed the CTI Controller providing connectivity
+    between the telephone system including AVAYA PBX, Harris PBX, Dialogic
+    and NMS Telephony Cards.
+
+* Telecom Billing System (HP-UNIX)
+  - Programmed a Telecom Billing System of 4,500,000 customers using C/C++, Oracle SQL/Pro*C.
+  - Responsible for the design and development and complete automation of the CDR Browser.
+  - Developed Reconciliation Call details Report CDR Generator software.
+  - Utilized RUP, UML, Middleware Tuxedo, multi-process etc.
+
+:   Basic knowledge of **C**, **x86 assembly**, **forth**, **Common Lisp**
 
 
+Education
+---------
+
+1997-2000
+:   **MSc, Computer Science and Electrical Engineering**; Huazhong University of Science and Technology (China)
+
+    *Focus: Precision Analyst System of Computer Numerical Control*
+
+1993-1997
+:   **BEng, Engineering in Technology**; Wuhan University of Technology (China)
+
+    *Heat Engine*
+
+
+Extra
+-----
+
+* Human Languages:
+
+     * Chinese (native speaker)
+     * English
+
+* Program Languages:
+
+     * **C**/C++
+     * Java, C#
+     * Python
+     * shell, vimscript
+
+
+  [1]: https://en.wikipedia.org/wiki/British_degree_abbreviations
+  [2]: https://github.com/huawenyu

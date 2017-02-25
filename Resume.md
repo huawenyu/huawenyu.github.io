@@ -11,11 +11,9 @@ permalink: /Resume/
 Wilson Huawen Yu
 ================
 
-    -------------------     ----------------------------
-    Burnaby                        huawen.yu@gmail.com
-    British Columbia               Fortinet Technologies
-    (Canada)                  Burnaby, BC V5C 6G9 Canada
-    -------------------     ----------------------------
+    huawen.yu@gmail.com
+    Fortinet Technologies
+    Burnaby, British Columbia, Canada
 
 Experience
 ----------

@@ -9,7 +9,7 @@ permalink: /Resume/
 
 
 Wilson Huawen Yu
-================
+----------------
 
     huawen.yu@gmail.com
     Fortinet Technologies

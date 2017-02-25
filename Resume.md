@@ -12,9 +12,9 @@ Wilson Huawen Yu
 ================
 
 -------------------     ----------------------------
-Burnaby                        huawen.yu@gmail.com
-British Columbia               Fortinet Technologies
-(Canada)                  Burnaby, BC V5C 6G9 Canada
+Burnaby                        huawen.yu@gmail.com  
+British Columbia               Fortinet Technologies  
+(Canada)                  Burnaby, BC V5C 6G9 Canada  
 -------------------     ----------------------------
 
 Experience

@@ -32,13 +32,18 @@ This is a function that takes two arguments, a and b, and returns their sum. We 
       }
     }
 
+    ghci> :t (+)
+    (+) :: (Num a) => a -> a -> a
+
+    <OR> Like
+
+    (+) :: (Num a) => a -> (a -> a)
+    (+) :: (Num a) => 3 -> (4 -> a)
+
 This is a function that takes one argument, a, and returns a function that takes another argument, b, and that function returns their sum.
 
-    add(3)(4);
-
-    var add3 = add(3);
-
-    add3(4);
+    add(3, 4);   ==>   add(3)(4);   ==>   var add3 = add(3);
+                                          add3(4);
 
 The first statement returns 7, like the add(3, 4) statement. The second statement defines a new function called add3 that will add 3 to its argument. This is what some people may call a closure. The third statement uses the add3 operation to add 3 to 4, again producing 7 as a result.
 

@@ -67,6 +67,11 @@ Clean logfile which come from `plink -telnet 127.0.0.1 | tee log.file`
     iperf -s -B serverIP
     iperf -c serverIP -d -t 60 -i 10
 
+## ssh with password
+
+    $ sudo apt-get install sshpass
+    $ sshpass -p your_password ssh user@hostname
+
 # Commands:
 
 ## du

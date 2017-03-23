@@ -12,6 +12,8 @@ tags: admin command
 
 # Howto:
 
+## [great-terminal-replacements-for-gui-applications][5]
+
 ## file order-by-size
 
 If you want to find all files in the current directory and its sub directories and list them according to their size (without considering their path), and assuming none of the file names contain newline characters, with GNU `find`, you can do this:
@@ -229,6 +231,9 @@ There have another tools like: lsdiff, filterdiff, diffstat, patch.
     uniq -s 8		skip the first 8 char
     uniq -uf 1
     uniq -c
+
+    # statitics app crash times
+    ag --nogroup " application " Mar_16.txt.txt | awk '{print $6}' | sort | uniq -c
 ```
 
 ## join
@@ -304,6 +309,20 @@ merge two files by column
     tar xzf rarlinux-x64-5.0.b7.tar.gz
     sudo cp rar unrar /usr/local/bin/
     unrar x ~/Downloads/wps_symbol_fonts.rar
+
+## dns & reverse-dns
+
+    $ dig +noall +answer www.gnu.org
+    www.gnu.org.            67      IN      CNAME   gnu.org.
+    gnu.org.                67      IN      A       199.232.41.10
+
+    The IP address is displayed in the A record, and is 199.232.41.10.
+    The +noall, +answer combination basically tells dig to only report the answer of the DNS query and skip the rest of the output.
+
+    ### -x option to do a reverse DNS lookup
+    $ dig +noall +answer -x 199.232.41.10
+    10.41.232.199.in-addr.arpa. 36000 IN    CNAME   rev-c41-10.gnu.org.
+    rev-c41-10.gnu.org.       300     IN      PTR     www.gnu.org.
 
 ## find
 
@@ -447,4 +466,5 @@ batch rename all wad*.c files to extension *.cpp files
   [2]: http://57un.wordpress.com/2013/04/29/15-interesting-and-extremely-helpful-linux-cli-tricks/
   [3]: http://www.cyberciti.biz/faq/linux-unix-test-internet-connection-download-upload-speed/
   [4]: http://varunbpatil.github.io/2012/09/19/linux-tricks/#.UhuM2BJDss0
+  [5]: http://www.tuxarena.com/2014/03/20-great-terminal-replacements-for-gui-applications/
 

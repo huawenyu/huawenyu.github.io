@@ -10,9 +10,11 @@ tags: admin command
 {:toc}
 
 
-# Howto:
+# terminal application
 
 ## [great-terminal-replacements-for-gui-applications][5]
+
+# Howtos
 
 ## file order-by-size
 
@@ -73,6 +75,127 @@ Clean logfile which come from `plink -telnet 127.0.0.1 | tee log.file`
 
     $ sudo apt-get install sshpass
     $ sshpass -p your_password ssh user@hostname
+
+# command line
+
+## Command Line Shortkey
+
+[Command Line Shortkey][6]
+
+```
+    CTRL + A                <<< Move to the beginning of the line
+    CTRL + E                <<< Move to the end of the line
+
+    CTRL + U                <<< not work linux, Clear the characters on the line before the current cursor position
+    CTRL + K                <<< Clear the characters on the line after the current cursor position
+
+    CTRL + _                <<< Undo the last change
+
+    Others
+    CTRL + [left arrow]     <<< Move one word backward (on some systems this is ALT + B)
+    CTRL + [right arrow]    <<< Move one word forward (on some systems this is ALT + F)
+    ESC + [backspace]       <<< Delete the word in front of the cursor
+    Alt + [backspace]       <<< Delete the word in front of the cursor
+    CTRL + W                <<< Delete the word in front of the cursor
+    ALT + D                 <<< Delete the word after the cursor
+
+    CTRL + L                <<< Clear screen
+    CTRL + S                <<< Stop output to screen
+    CTRL + Q                <<< Re-enable screen output
+    CTRL + C                <<< Terminate/kill current foreground process
+    CTRL + Z                <<< Suspend/stop current foreground process
+```
+
+## command history
+
+[Command History][7]
+
+```
+    history n               <<< This will only list the last n commands. 
+
+    CTRL + R                <<< Search history, hit ctrl-r again to scroll backward through the matched history
+    CTRL + S                <<< scroll forward through the matched history
+    CTRL + G, or left,right <<< Escape from search mode
+    !abc                    <<< Echo last command in history beginning with abc
+    !abc:p                  <<< Echo last command in history beginning with abc
+    !?abc                   <<< Echo the last command that contains abc
+    !?abc?                  <<< Echo the most recent command that contains string.
+
+    !!                      <<< Echo last whole command
+    !* <OR> !^ <OR> !$  <OR> !:2    <<< Echo last command’s parameters <ALL>,  <first>,  <last>, <2nd>
+    Alt+.  <OR>  Alt+_      <<< Echo last command’s parameters: Press esc-. or alt+., tt cycles through the previous arguments you used.
+
+    ls -l !cp:2             <<< !cp:2 echo command starts with cp and takes the second argument
+
+    $ ls | sed ... | source /dev/stdin   <<< execute the output of a command within the current shell?
+    $ eval $( ls | sed... )
+```
+
+
+## tricks
+
+```
+    $ gnome-session-quit	<<< shell’s logout command
+    $ reset		<<< shell reset
+    $ setxkbmap	<<< reset the keyboard map
+    $ bash -xv filesize.sh   <<<< Execute Shell script with debug option
+```
+
+## shell wildcard:
+
+```
+    ?       do you have this character, zero or one ?
+    .        yes, I have just one.
+    +       yes, I have at least one, one or more.
+    *        who knows, have or none.
+    ^        begin with
+    [^]      not set
+    $       end with
+```
+
+## shell Multiline
+
+### 1. Passing multiline string to a variable:
+
+```
+    Examples of Bash cat <<EOF syntax usage:
+
+    $ sql=$(cat <<EOF
+    SELECT foo, bar FROM db
+    WHERE foo='baz'
+    EOF
+    )
+```
+
+The $sql variable now holds newlines as well, you can check it with echo -e "$sql" cmd:
+
+    $ echo $sql
+
+### 2. Passing multiline string to create a script file:
+
+```
+    $ cat <<EOF > print.sh
+    #!/bin/bash
+    echo \$PWD
+    echo $PWD
+    EOF
+```
+
+The print.sh file now contains:
+
+    #!/bin/bash
+    echo $PWD
+    echo /home/user
+
+### 3. Passing multiline string to a command/pipe:
+
+```
+    $ cat <<EOF | grep 'b' | tee b.txt | grep 'r'
+    foo
+    bar
+    baz
+    EOF
+```
 
 # Commands:
 
@@ -467,4 +590,6 @@ batch rename all wad*.c files to extension *.cpp files
   [3]: http://www.cyberciti.biz/faq/linux-unix-test-internet-connection-download-upload-speed/
   [4]: http://varunbpatil.github.io/2012/09/19/linux-tricks/#.UhuM2BJDss0
   [5]: http://www.tuxarena.com/2014/03/20-great-terminal-replacements-for-gui-applications/
+  [6]: http://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/
+  [7]: http://www.tldp.org/LDP/GNU-Linux-Tools-Summary/html/x1712.htm
 

@@ -14,13 +14,18 @@ tags: admin
 
 ## [great-terminal-replacements-for-gui-applications][1]
 
-# tmux
+# Tools
+
+## tmux
 
     For example, if the top-line show like this:
       > 1:zsh  2:ssl-log- 3:urlfilter  4:block
 
     tmux-command: swap-window -s 4 -t 2
 
+# minicom
+
+    $ sudo -E minicom -b 115200 | tee ~/tmp/log.minicom
 
 
   [1]: http://www.tuxarena.com/2014/03/20-great-terminal-replacements-for-gui-applications/

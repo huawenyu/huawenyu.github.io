@@ -25,7 +25,12 @@ tags: admin
 
 # minicom
 
-    $ sudo -E minicom -b 115200 | tee ~/tmp/log.minicom
+    1. set env var value
+      MINICOM="-w"
+      export MINICOM
+
+    2. sudo also using current shell's env: sudo -E
+      $ sudo -E minicom -b 115200 | tee ~/tmp/log.minicom
 
 
   [1]: http://www.tuxarena.com/2014/03/20-great-terminal-replacements-for-gui-applications/

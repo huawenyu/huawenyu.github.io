@@ -16,6 +16,15 @@ tags: admin
 
 # Tools
 
+## meld (GUI diff)
+
+    # Ubuntu (Linux Mint 14.04.1-Ubuntu)
+    1. Download from https://github.com/GNOME/meld
+    2. The doc say:
+        $ python3 setup.py install --prefix=/usr
+    3. But that not work for me. If use the doc's build cmd, it works except it require GTK 3.14, current only GTK 3.10:
+        $ python3 setup.py --no-compile-schemas install
+
 ## tmux
 
     For example, if the top-line show like this:
@@ -32,6 +41,14 @@ tags: admin
     2. sudo also using current shell's env: sudo -E
       $ sudo -E minicom -b 115200 | tee ~/tmp/log.minicom
 
+# Howtos
+
+## Upgrade GTK 3.14
+
+The GTK 3.10 is default version of Ubuntu (Linux Mint 14.04.1-Ubuntu).
+
+### list current GTK version
+
+    $ dpkg -l libgtk2.0-0 libgtk-3-0
 
   [1]: http://www.tuxarena.com/2014/03/20-great-terminal-replacements-for-gui-applications/
-

@@ -24,6 +24,8 @@ tags: admin
         $ python3 setup.py install --prefix=/usr
     3. But that not work for me. If use the doc's build cmd, it works except it require GTK 3.14, current only GTK 3.10:
         $ python3 setup.py --no-compile-schemas install
+    4. If meld requre GTK 3.14, so far it's hard to upgrade GTK 3.14 from 3.10, we should use old meld:
+        Download a old release version from github/meld, install this old one.
 
 ## tmux
 

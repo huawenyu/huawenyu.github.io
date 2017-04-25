@@ -43,6 +43,22 @@ tags: admin
     2. sudo also using current shell's env: sudo -E
       $ sudo -E minicom -b 115200 | tee ~/tmp/log.minicom
 
+# nomachine
+
+## hwoto over ssh
+
+```
+Error Message:
+
+    Running NoMachine sessions over a SSH connection is disabled on this server.
+
+The suggested workaround is:
+  $ sudo vi /usr/NX/etc/server.cfg
+      ClientConnectionMethods NX,HTTP,SSH
+
+  $ sudo /usr/NX/bin/nxserver --restart
+```
+
 # Howtos
 
 ## Upgrade GTK 3.14

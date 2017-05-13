@@ -214,6 +214,14 @@ The print.sh file now contains:
     $ dd if=/dev/dvd of=myfile.iso bs=2048	# Ripping a CD or DVD for local storage
     $ dd if=/dev/sdc of=sdc.img bs=100M conv=sync,noerror	# Image a disk
 
+## grep; ag,ack
+
+    $ grep -Inr "60D"
+    $ ag --nogroup "kernel" cooked
+
+    # cut long lines and keep color
+    $ ag --nogroup --color "kernel" cooked | cut -c1-200
+
 ## rm
 
     $ rm "-1mpFile.out"

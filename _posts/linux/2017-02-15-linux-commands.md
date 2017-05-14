@@ -199,6 +199,40 @@ The print.sh file now contains:
 
 # Commands:
 
+## watch
+
+### sample
+
+```sh
+    # every 5-seconds execute the command
+    watch    -n 5 free -m
+    watch -t -n 5 free -m               <=== -t silent the header
+    watch -d=cumulative 'ls -l | fgrep janis'
+```
+
+### shell-script likes
+
+You can emulate the basic functionality with the shell loop:
+
+    while :; do clear; your_command; sleep 2; done
+
+That will loop forever, clear the screen, run your command, and wait two seconds - the basic `watch your_command` implementation.
+
+You can take this a step further and create a `watch.sh` script that can accept `your_command` and `sleep_duration` as parameters:
+
+```sh
+    #!/bin/bash
+    # usage: watch.sh <your_command> <sleep_duration>
+
+    while :;
+      do
+      clear
+      date
+      $1
+      sleep $2
+    done
+```
+
 ## du
 
     du -shc <dir>

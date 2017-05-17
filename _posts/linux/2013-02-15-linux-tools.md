@@ -32,7 +32,7 @@ tags: admin
     For example, if the top-line show like this:
       > 1:zsh  2:ssl-log- 3:urlfilter  4:block
 
-    tmux-command: swap-window -s 4 -t 2
+    tmux-command: move-window/swap-window -s 4 -t 2         <=== move/swap s(src) to t(dest)
 
 # minicom
 

@@ -598,13 +598,247 @@ tftp,ftp都会用到，因为他们的传输机制决定了，它不像http访�
 
 ftp使用tcp21建立连接，使用20端口发送数据，其中又有两种方式:
 
-  1. 一种主动active mode
-     主动模式下，client使用port命令告诉server我用哪一个端口接受数据，然后server主动发起对这个端口的请求。
-  2. 一种被动passive mode。
-     被动模式下，server使用port命令告诉客户端，它用那个端口监听，然后客户端发起对他的数据传输，
-     所以这对于一个防火墙来说就是比较麻烦的事情， 因为有可能会有new状态的数据包，但是它又是合理的请求，这个时候就用到这个related状态了，
-     他就是一种关联，在linux中，有个叫 ftp_conntrack的模块，它能识别port命令，然后对相应的端口进行放行。
+#### 一种主动active mode
 
+主动模式下，client使用port命令告诉server我用哪一个端口接受数据，然后server主动发起对这个端口的请求。
+
+#### 一种被动passive mode
+
+被动模式下，server使用port命令告诉客户端，它用那个端口监听，然后客户端发起对他的数据传输，
+所以这对于一个防火墙来说就是比较麻烦的事情:
+因为有可能会有new状态的数据包，但是它又是合理的请求，这个时候就用到这个related状态了，
+他就是一种关联，在linux中，有个叫 ftp_conntrack的模块，它能识别port命令，然后对相应的端口进行放行。
+
+# 实验4: 基于filter表的防火墙实例
+
+## (1)Check rules of chain: INPUT,FORWARD,OUTPUT
+
+    [root@tp ~]# iptables -L -n
+    Chain INPUT (policy ACCEPT)  Chain INPUT (policy DROP)
+    target     prot opt source               destination
+    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+    ACCEPT     tcp  --  192.168.181.34       0.0.0.0/0           tcp dpt:22
+    ACCEPT     tcp  --  192.168.181.35       0.0.0.0/0           tcp dpt:22
+    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+    Chain FORWARD (policy DROP)
+    target     prot opt source               destination
+
+    Chain OUTPUT (policy DROP)
+    target     prot opt source               destination
+    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+    ACCEPT     tcp  --  192.168.181.33       0.0.0.0/0           tcp spt:22
+
+如果你在安装linux时没有选择启动防火墙,则什么规则都没有:
+
+    # iptables -L -n
+
+    Chain INPUT (policy ACCEPT)
+    target       prot opt source                 destination
+    Chain FORWARD (policy ACCEPT)
+    target       prot opt source                 destination
+    Chain OUTPUT (policy ACCEPT)
+    target       prot opt source                 destination
+
+
+## (2)清除原有规则
+
+不管你在安装linux时是否启动了防火墙,如果你想配置属于自己的防火墙,
+那就清除现在filter的所有规则.
+
+    # iptables -F        清除预设表filter中的所有规则链的规则
+    # iptables -X        清除预设表filter中使用者自定链中的规则
+    # iptables -Z        清楚预设表filter中计数器
+
+我们在来看一下: `iptables -L -n`
+什么都没有了吧,和我们在安装linux时没有启动防火墙是一样的.
+(提前说一句,这些配置就像用命令配置IP一样,重起就会失去作用),怎么保存.
+
+    [root@tp ~]# /etc/rc.d/init.d/iptables save
+
+这样就可以写到/etc/sysconfig/iptables文件里了.
+写入后记得把防火墙重起一下,才能起作用.
+
+    [root@tp ~]# service iptables restart
+
+现在IPTABLES配置表里什么配置都没有了,那我们开始我们的配置吧
+
+## (3)设定预设规则
+
+到这最好做一个shellscript.
+
+```sh
+    # cat ipt.sh
+
+    #!/bin/bash
+    #iptables init
+    #---------------------------
+    iptables -F
+    iptables -X
+    iptables -Z
+    #set the default rules
+    #---------------------------
+    iptables -P INPUT DROP
+    iptables -P OUTPUT DROP
+    iptables -P FORWARD DROP
+
+    #---------------------------
+    service iptables save
+    iptables -L -n
+
+    # bash ./ipt.sh
+```
+
+上面的意思是,当超出了IPTABLES里filter表里的两个链规则(INPUT,FORWARD)时,
+不在这两个规则里的数据包怎么处理呢,那就是DROP(放弃). 应该说这样配置是很安全的:
+  - 我们要控制流入数据包
+  - 对于OUTPUT链,也就是流出的包我们不用做太多限制,
+    而是采取ACCEPT,也就是说,不在着个规则里的包怎么办呢,那就是通过.
+
+`注`:
+
+如果你是远程SSH登陆的话,当你输入第一个命令回车的时候就应该掉了.
+因为你没有设置任何规则. 怎么办,去本机操作呗!
+
+## (4)添加规则
+
+### 首先添加INPUT链
+
+INPUT链的默认规则是DROP,所以我们就写需要ACCETP(通过)的链
+为了能采用远程SSH登陆,我们要开启22端口.
+
+```
+    # 开启SSH所需要打开22端口
+        # 进入INPUT的来源IP, localPC: `192.168.181.34`
+        iptables -A INPUT  -s 192.168.181.34 -p tcp --dport 22 -j ACCEPT
+
+        # 出去OUTPUT的来源IP（基本都是本机）, Server: `192.168.181.33`
+        iptables -A OUTPUT -s 192.168.181.33 -p tcp --sport 22 -j ACCEPT
+
+    # WEB服务器,开启80端口
+    iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+    # 邮件服务器,开启25,110端口.
+    iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+
+    # FTP服务器,开启21端口
+    iptables -A INPUT -p tcp --dport 21 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 20 -j ACCEPT
+
+    # DNS服务器,开启53端口
+    iptables -A INPUT -p tcp --dport 53 -j ACCEPT
+```
+
+如果你还做了其他的服务器,需要开启哪个端口,照写就行了.
+上面主要写的都是INPUT链,凡是不在上面的规则里的,都DROP
+
+    # 允许icmp包通过,也就是允许ping
+        # IF (OUTPUT设置成DROP的话)
+        iptables -A OUTPUT -p icmp -j ACCEPT
+
+        # IF (INPUT设置成DROP的话)
+        iptables -A INPUT -p icmp -j ACCEPT
+
+    # 允许loopback!(不然会导致DNS无法正常关闭等问题)
+        # (如果是INPUT DROP)
+        iptables -A INPUT -i lo -p all -j ACCEPT
+        # (如果是OUTPUT DROP)
+        iptables -A OUTPUT -o lo -p all -j ACCEPT
+
+### OUTPUT链
+
+OUTPUT链默认规则是ACCEPT,所以我们就写需要DROP(放弃)的链.
+当然出入更安全的考虑你也可以包OUTPUT链设置成DROP,那你添加的规则就多一些.
+
+有些些特洛伊木马会扫描端口31337到31340(即黑客语言中的 elite 端口)上的服务。
+既然合法服务都不使用这些非标准端口来通信,
+阻塞这些端口能够有效地减少你的网络上可能被感染的机器和它们的远程主服务器进行独立通信的机会
+
+    # 减少不安全的端口连接
+    iptables -A OUTPUT -p tcp --sport 31337 -j DROP
+    iptables -A OUTPUT -p tcp --dport 31337 -j DROP
+
+还有其他端口也一样,像:31335、27444、27665、20034 NetBus、9704、137-139（smb）,2049(NFS)端口也应被禁止,我在这写的也不全.
+
+    下面写一下更加细致的规则,就是限制到某台机器
+    如:我们只允许192.168.0.3的机器进行SSH连接
+    # iptables -A INPUT -s 192.168.0.3 -p tcp --dport 22 -j ACCEPT
+
+    如果要允许,或限制一段IP地址可用 192.168.0.0/24 表示192.168.0.1-255端的所有IP.
+    24表示子网掩码数.但要记得把 /etc/sysconfig/iptables 里的这一行删了.
+    -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT 因为它表示所有地址都可以登陆.
+    或采用命令方式:
+    # iptables -D INPUT -p tcp --dport 22 -j ACCEPT
+    然后保存,我再说一边,反是采用命令的方式,只在当时生效,如果想要重起后也起作用,那就要保存.写入到/etc/sysconfig/iptables文件里.
+    # /etc/rc.d/init.d/iptables save
+    这样写 !192.168.0.3 表示除了192.168.0.3的ip地址
+    其他的规则连接也一样这么设置.
+
+### FORWARD链
+
+FORWARD链的默认规则是DROP,所以我们就写需要ACCETP(通过)的链,对正在转发链的监控.
+
+#### 开启转发功能
+
+在做NAT时,`FORWARD默认规则是DROP时`,必须做
+
+    iptables -A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+    iptables -A FORWARD -i eth1 -o eh0 -j ACCEPT
+
+#### 丢弃坏的TCP包
+
+    iptables -A FORWARD -p TCP ! --syn -m state --state NEW -j DROP
+
+#### 处理IP碎片数量,防止攻击,允许每秒100个
+
+    iptables -A FORWARD -f -m limit --limit 100/s --limit-burst 100 -j ACCEPT
+
+#### 设置ICMP包过滤,允许每秒1个包,限制触发条件是10个包.
+
+    iptables -A FORWARD -p icmp -m limit --limit 1/s --limit-burst 10 -j ACCEPT
+
+我在前面只所以允许ICMP包通过,就是因为我在这里有限制.
+
+### 配置NAT表
+
+#### 1,查看本机关于NAT的设置情况
+
+    [root@tp rc.d]# iptables -t nat -L
+
+      Chain PREROUTING (policy ACCEPT)
+      target       prot opt source                 destination
+      Chain POSTROUTING (policy ACCEPT)
+      target       prot opt source                 destination
+      SNAT         all    --    192.168.0.0/24         anywhere              to:211.101.46.235
+      Chain OUTPUT (policy ACCEPT)
+      target       prot opt source                 destination
+
+如果你想清除,命令是
+
+    # iptables -F -t nat
+    # iptables -X -t nat
+    # iptables -Z -t nat
+
+#### 2,添加规则
+
+添加规则,我们只添加DROP链.因为默认链全是ACCEPT.
+
+    防止外网用内网IP欺骗
+    # iptables -t nat -A PREROUTING -i eth0 -s 10.0.0.0/8 -j DROP
+    # iptables -t nat -A PREROUTING -i eth0 -s 172.16.0.0/12 -j DROP
+    # iptables -t nat -A PREROUTING -i eth0 -s 192.168.0.0/16 -j DROP
+
+## (5)最后 drop非法连接
+
+    # iptables -A INPUT   -m state --state INVALID -j DROP
+    # iptables -A OUTPUT  -m state --state INVALID -j DROP
+    # iptables -A FORWARD -m state --state INVALID -j DROP
+
+    允许所有已经建立的和相关的连接
+    # iptables-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    # iptables-A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+    # /etc/rc.d/init.d/iptables save
 
   [1]: https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO.txt
   [2]: http://www.docum.org/docum.org/kptd/

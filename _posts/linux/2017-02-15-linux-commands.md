@@ -248,6 +248,46 @@ You can take this a step further and create a `watch.sh` script that can accept 
     $ dd if=/dev/dvd of=myfile.iso bs=2048	# Ripping a CD or DVD for local storage
     $ dd if=/dev/sdc of=sdc.img bs=100M conv=sync,noerror	# Image a disk
 
+## ls
+
+    $ ls -d forti*
+      forticov  fortipkg  fortitest  fortiweb
+
+    $ ls forti*
+      forticov:
+      coretypes.h  defaults.h  filenames.h  gcov-io.c  gcov-io.h  gcov-iov.h  libgcov.c  Makefile  obj  Rules.mk  script  tm.h  tsystem.h
+
+      fortipkg:
+      fetch  include  lib  packages
+
+      fortitest:
+      appl  asic  common  include  init  linux  Makefile  netbt  obj  osdep  platform  Rules.mk  testcase  tools
+
+      fortiweb:
+      client  extutil  genoem.sh  genpy.py  include  java  Makefile  Makefile.gui  modules  obj  packages  python  Rules.mk  server  tools  ujson
+
+With `zsh` you can easily express it directly, e.g:
+
+    echo *(.)
+
+will either only return the list of regular files or an error depending on your configuration.
+
+For the non-directories:
+
+    echo *(^/)
+
+(will include symlinks (including to directories), named pipes, devices, sockets, doors...)
+
+    echo *(-.)
+
+for regular files and symlinks to regular files.
+
+    echo *(-^/)
+
+for non-directories and no symlinks to directories either.
+
+Also, see the `D` globbing qualifier if you want to include <strong>D</strong>ot files (hidden files), like `*(D-.)`.
+
 ## grep; ag,ack
 
     $ grep -Inr "60D"

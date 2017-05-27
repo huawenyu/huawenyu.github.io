@@ -45,7 +45,7 @@ tags: admin
 
 # nomachine
 
-## hwoto over ssh
+## remote control over ssh
 
 ```
 Error Message:
@@ -58,6 +58,29 @@ The suggested workaround is:
 
   $ sudo /usr/NX/bin/nxserver --restart
 ```
+
+# Static code analyzers/checker for C
+
+## cppchecker
+
+### install
+    $ git clone https://github.com/danmar/cppcheck.git
+    $ cd cppcheck
+    $ make SRCDIR=build CFGDIR=/usr/local/bin/ HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function"
+
+    ### 'make install' also build and requires the CFGDIR option to be passed.
+    $ sudo make install CFGDIR=/usr/local/bin/ HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function"
+
+### usage
+
+    $ cppcheck --enable=all wad_http_cache.c
+
+## cpplint
+
+This is automated checker to make sure a C++ file follows Google's C++ style
+guide (https://google.github.io/styleguide/cppguide.html).
+
+    https://github.com/google/styleguide/tree/gh-pages/cpplint
 
 # Howtos
 

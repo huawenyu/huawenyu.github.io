@@ -488,7 +488,7 @@ merge two files by column
 
 ## tar
 
-    tar cvfj Phpfiles-org.tar.bz2 /home/php
+    tar cvjf Phpfiles-org.tar.bz2 /home/php
     tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
 
     tar zxvf mysql.tar.gz -C /home/aaa		# uncompress to the assigned dir

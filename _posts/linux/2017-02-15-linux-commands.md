@@ -586,6 +586,21 @@ batch rename all wad*.c files to extension *.cpp files
     find ... -exec rm {} +		# new version like 'xargs'
     find ... -print0 | xargs -0 rm -rf	# more efficient, runs cmd 'rm' as few times as possible
 
+### Using semicolon (;) vs plus (+) with exec in find
+
+    This might be best illustrated with an example. Let's say that find turns up these files:
+    file1
+    file2
+    file3
+
+    Using -exec with a semicolon (find . -exec ls '{}' \;), will execute
+
+    ls file1
+    ls file2
+    ls file3
+
+    But if you use a plus sign instead (find . -exec ls '{}' \+), all filenames will be passed as arguments to a single command:
+    ls file1 file2 file3
 
 # Samples
 

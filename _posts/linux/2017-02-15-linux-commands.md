@@ -529,6 +529,11 @@ merge two files by column
     10.41.232.199.in-addr.arpa. 36000 IN    CNAME   rev-c41-10.gnu.org.
     rev-c41-10.gnu.org.       300     IN      PTR     www.gnu.org.
 
+## locate
+
+    The locate command is lightning fast because there is a background process that runs on your system that continuously finds new files and stores them in a database.
+    When you use the locate command, it then searches that database for the filename instead of searching your filesystem while you wait (which is what the find command does).
+
 ## find
 
     -a*,-c*,-m*: access, attr, modify

@@ -29,10 +29,17 @@ tags: admin
 
 ## tmux
 
+### rename-window <name>
+
     For example, if the top-line show like this:
       > 1:zsh  2:ssl-log- 3:urlfilter  4:block
 
+### swap-window -s(src) 4 -t(dst) 2
     tmux-command: move-window/swap-window -s 4 -t 2         <=== move/swap s(src) to t(dest)
+
+### swap-pane -s(src) 4 -t(dst) 2
+
+    Prefix+q: show pane number
 
 # minicom
 

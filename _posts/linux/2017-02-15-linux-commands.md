@@ -685,6 +685,21 @@ batch rename all wad*.c files to extension *.cpp files
 
     $ ethtool -p eth0           # Blink eth0′s LED so you can find it in the rat’s next of server cables. Ctrl-C to stop. Thanks
 
+## Howtos extra
+
+### How to Disable Invalid SSL in Firefox
+
+Secure Socket Layer, or SSL, protects private data by encrypting it during transmission.
+To enable SSL encryption, websites use an SSL certificate issued by a certificate authority.
+When you enter an "https://" address to browse a site, Firefox checks the SSL certificate data to determine whether it is valid.
+When Firefox encounters an expired or invalid SSL certificate, it blocks the page or displays a warning.
+However, you might want to disable the warnings or blocking of unencrypted sites for site testing or other reasons.
+A change to advanced Firefox preferences allows you to prevent the warnings.
+
+- about:config
+- browser.ssl_override_behavior" in the "Filter" box. Double-click the "browser.ssl_override_behavior" value in the "Preference Name" list.
+- Change the value in the "Enter integer value" dialog box from "2" to "1" and click the "OK" button.
+
 ```
 
   [1]: http://linuxtrove.com/wp/?p=314

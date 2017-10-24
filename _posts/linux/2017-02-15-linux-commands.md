@@ -199,6 +199,10 @@ The print.sh file now contains:
 
 # Commands:
 
+## mutt - email client
+
+    echo "" | mutt -s 'patch of HTTP-CONNECT-USER' hyu@fortinet.com -a patch.diff
+
 ## watch
 
 ### sample

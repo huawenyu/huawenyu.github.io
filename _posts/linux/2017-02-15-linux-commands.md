@@ -199,9 +199,24 @@ The print.sh file now contains:
 
 # Commands:
 
-## mutt - email client
+## tool: mutt - email client
 
     echo "" | mutt -s 'patch of HTTP-CONNECT-USER' hyu@fortinet.com -a patch.diff
+
+## tool: trans - dictionary client
+
+[Page][https://github.com/soimort/translate-shell]
+
+    $ wget git.io/trans
+    $ chmod +x ./trans
+
+    $ trans :zh word
+    $ trans en:zh "word processor"
+
+    ### Translate a word into Chinese and Japanese
+    $ trans :zh+ja word
+
+    $ trans zh: 手紙
 
 ## watch
 

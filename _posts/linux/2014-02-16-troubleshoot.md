@@ -291,6 +291,7 @@ SSH: connect to host localhost port 22: Connection refused
 
 ### Queried service `ssh status`
 
+    ### Even login with 'root', we also need `sudo`
     $ sudo service ssh status
     $ sudo service ssh restart
 

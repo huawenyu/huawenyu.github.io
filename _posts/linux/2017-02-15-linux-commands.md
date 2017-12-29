@@ -626,6 +626,21 @@ batch rename all wad*.c files to extension *.cpp files
     But if you use a plus sign instead (find . -exec ls '{}' \+), all filenames will be passed as arguments to a single command:
     ls file1 file2 file3
 
+## curl
+
+### Install new verion (ubuntu)
+
+1. Append to /etc/apt/sources.list like this:
+
+deb http://security.ubuntu.com/ubuntu zesty-security main
+deb http://cz.archive.ubuntu.com/ubuntu zesty main
+
+2. Install
+
+$ sudo apt-get update
+$ sudo apt-get install libcurl3  ### if needed, maybe remove them first
+$ sudo apt-get install curl
+
 # Samples
 
     $ stat -f /      	 Display the status of the filesystem using option –f

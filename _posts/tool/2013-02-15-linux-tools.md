@@ -16,6 +16,39 @@ tags: admin
 
 # Tools
 
+## curl
+
+### options
+    -k, https
+    -v, verbose
+    -o, output to file
+    --limit-rate,  Example: curl -k -o /dev/null --limit-rate 8b www.tired.com
+    --speed-limit, Example: --speed-limit 100 and it will exit if less than 100 bytes per second are downloaded over a 30 second period.
+    -#, --progress-bar, show percentage
+
+### statistics
+
+#### data + speed
+
+    $ curl -kv -o ~/tmp/log.1 --limit-rate 8b www.tired.com
+    100   184  100   184    0     0      8      0  0:00:23  0:00:22  0:00:01     7
+    
+    
+    ### headers: total,download,upload,speed,time
+    % Total    % Received % Xferd  Average Speed          Time             Curr.
+                                   Dload  Upload Total    Current  Left    Speed
+    0  151M    0 38608    0     0   9406      0  4:41:43  0:00:04  4:41:39  9287
+
+#### % percentage
+
+    -#, --progress-bar
+    $ curl -kv -# -o ~/tmp/log.1 --limit-rate 8b www.tired.com
+    [##########################                                                37.0%]
+
+### press OK
+
+    $ curl --form upload=@localfilename --form press=OK [URL]
+
 ## meld (GUI diff)
 
     # Ubuntu (Linux Mint 14.04.1-Ubuntu)

@@ -18,7 +18,61 @@ Please install plugin [vim-eval](https://github.com/amiorin/vim-eval) which can 
 [modularizing-vimscript](http://bling.github.io/blog/2013/08/16/modularizing-vimscript/)  
 [vim-jslike-oop](https://github.com/t9md/vim-jslike-oop/blob/master/vim-jslike-oop.vim)  
 
+## Modularizing VimScript
 
+Let’s take a look at how we can create an object that is transient, has state, and contains methods you can invoke, like any modern OOP language can do.
+```vim
+
+    function! myobject#new()
+      let obj = {}
+      let obj._cats = []
+    
+      function! obj.add_cat()
+        call add(self._cats, '(^.^)')
+      endfunction
+    
+      function! obj.meow()
+        for cat in self._cats
+          echo cat
+        endfor
+      endfunction
+    
+      return obj
+    endfunction
+    
+    " somewhere else
+    let x = myobject#new()
+    call x.add_cat()
+    call x.meow()
+```
+
+This might look familiar to some of you. Yes, it’s almost the same as the JavaScript Module Pattern. Unfortunately, closures are not supported, but otherwise all of the usual benefits apply here, mainly controlled visibility into private state and transience!
+
+## static,public,private functions
+
+You can even take this concept further and replicate “static” functions:
+```vim
+
+    function! s:object#private_static()
+    endfunction
+
+    function! g:object#public_static()
+    endfunction
+
+    function! g:object#new()
+      let obj = {}
+
+      function! obj.public()
+      endfunction
+
+      function! obj._private()
+      endfunction
+
+      return obj
+    endfunction
+```
+
+Yep, same story as JavaScript here – _ variables/functions are “private”.
 
 # Dictionaries
 

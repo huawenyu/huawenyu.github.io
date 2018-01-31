@@ -26,6 +26,11 @@ tags: admin
     --speed-limit, Example: --speed-limit 100 and it will exit if less than 100 bytes per second are downloaded over a 30 second period.
     -#, --progress-bar, show percentage
 
+### sample
+
+    ### Last long time to get a large file to /dev/null
+    curl -o /dev/null -x 10.1.1.123:8080 -U guest:guest --limit-rate 8b http://172.18.2.169/upload/linoxu/debug_out
+
 ### statistics
 
 #### data + speed

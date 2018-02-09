@@ -30,4 +30,20 @@ If there have radius authentication, unplug the wire, login to your old local us
     $ sudo usermod -md /home/newname newname    # this step may take a while, you can stop it by Ctrl+C, as far as I know, it will still work
     $ [optional] sudo usermod -c "New_real_name" newname        # Just to change Display Name
 
- 
+# Peek the output of a running process
+
+## Using strace
+
+    $ sudo strace -p<pid> -s9999 -e write
+      (-s9999 avoids having strings truncated to 32 characters, and write the system call that produces output.)
+    $ strace -p1234 -e trace= -e write=3        <<<===(a particular file descriptor)
+    $ strace -o trace.log                       <<<=== If the output is scrolling by too fast
+
+## Using `tail`
+
+    $ cd /proc/1199
+
+    Then look for the `fd` directory underneath which hold the file-descriptors (0: stdin, 1: stdout, 2: stderr):
+    $ cd fd
+    $ tail -f 1
+

@@ -555,6 +555,27 @@ merge two files by column
 
 ## find
 
+### -exec '\;'
+
+If you run find with exec,
+  - '{}' expands to the filename of each file or directory found with find.
+  - ';'  the semicolon ends the command executed by exec. It needs to be escaped with \ so that the shell you run find inside does not treat it as its own special character, but rather passes it to find.
+
+### -exec '+'
+
+Also, find provides some optimization with exec cmd {} +
+  - find appends found files to the end of the command rather than invoking it once per file (so that the command is run only once, if possible).
+
+The difference in behavior (if not in efficiency) is easily noticeable if run with ls, e.g.
+
+    find ~ -iname '*.jpg' -exec ls {} \;
+    # vs
+    find ~ -iname '*.jpg' -exec ls {} +
+
+Assuming you have some jpg files (with short enough paths), the result is one line per file in first case and standard ls behavior of displaying files in columns for the latter.
+
+### samples
+
     -a*,-c*,-m*: access, attr, modify
         [a] access (read the file's contents) - atime
         [c] change the status (modify the file or its attributes) - ctime
@@ -592,8 +613,9 @@ merge two files by column
     find /home -user joe			# owned by `joe`
     find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f
     find . -type f -exec file '{}' \;
-    find . -maxdepth 3 -name rb_genco -exec grep -H "123268" {} \;
 
+    find . -maxdepth 3 -name rb_genco -exec grep -H "123268" {} \;
+    find -H . -maxdepth 3 -name rb_genco | xargs -I{} grep -lsn "123268" {}
 
     $ find dir1 dir2 dir3 | wc -l		# Count files
     $ find . -newer ../temp1 ! -newer ../temp2 -exec cp '{}' ./bkup/ ';'	# copy newer than 'temp1' and not newer than temp2

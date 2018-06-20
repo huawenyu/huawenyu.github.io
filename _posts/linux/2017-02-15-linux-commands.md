@@ -592,6 +592,7 @@ merge two files by column
     find /home -user joe			# owned by `joe`
     find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f
     find . -type f -exec file '{}' \;
+    find . -maxdepth 3 -name rb_genco -exec grep -H "123268" {} \;
 
 
     $ find dir1 dir2 dir3 | wc -l		# Count files

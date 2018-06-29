@@ -1,1 +1,0 @@
-_posts/2016-08-27-how-to-use-this-jekyll-theme.md
